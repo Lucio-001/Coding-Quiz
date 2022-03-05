@@ -1,4 +1,4 @@
-// Var with array and object for questions 
+// questions from demo video in an array 
 var questions = [
     {
         title: "Commonly used data types DO NOT include:",
@@ -39,17 +39,16 @@ var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
 // Seconds left is 15 seconds per question:
-var secondsLeft = 76;
+var secondsLeft = 60;
 // Holds interval time
 var holdInterval = 0;
-// Holds penalty time
+// Penelty time if answer is incorrect
 var penalty = 10;
-// Creates new element
+// Creates new element unordered list item
 var ulCreate = document.createElement("ul");
 
 // Triggers timer on button, shows user a display on the screen
 timer.addEventListener("click", function () {
-    // We are checking zero because its originally set to zero
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
@@ -67,12 +66,12 @@ timer.addEventListener("click", function () {
 
 // Renders questions and choices to page: 
 function render(questionIndex) {
-    // Clears existing data 
+    // Clears start page
     questionsDiv.innerHTML = "";
     ulCreate.innerHTML = "";
     // For loops to loop through all info in array
     for (var i = 0; i < questions.length; i++) {
-        // Appends question title only
+        // Adds questions to page
         var userQuestion = questions[questionIndex].title;
         var userChoices = questions[questionIndex].choices;
         questionsDiv.textContent = userQuestion;
@@ -86,7 +85,7 @@ function render(questionIndex) {
         listItem.addEventListener("click", (compare));
     })
 }
-// Event to compare choices with answer
+// Event to chose correct answer
 function compare(event) {
     var element = event.target;
 
@@ -94,23 +93,23 @@ function compare(event) {
 
         var createDiv = document.createElement("div");
         createDiv.setAttribute("id", "createDiv");
-        // Correct condition 
+        // Correct answer message
         if (element.textContent == questions[questionIndex].answer) {
             score++;
             createDiv.textContent = "Correct! The answer is:  " + questions[questionIndex].answer;
-            // Correct condition 
+            
         } else {
-            // Will deduct -5 seconds off secondsLeft for wrong answers
+            // removes 5 seconds if answer is not correct
             secondsLeft = secondsLeft - penalty;
             createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].answer;
         }
 
     }
-    // Question Index determines number question user is on
+    // Question Index shows what question we are on
     questionIndex++;
 
     if (questionIndex >= questions.length) {
-        // All done will append last page with user stats
+        // All done will show ending page
         allDone();
         createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
     } else {
@@ -124,14 +123,13 @@ function allDone() {
     questionsDiv.innerHTML = "";
     currentTime.innerHTML = "";
 
-    // Heading:
+    // All done header
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
     createH1.textContent = "All Done!"
 
     questionsDiv.appendChild(createH1);
 
-    // Paragraph
     var createP = document.createElement("p");
     createP.setAttribute("id", "createP");
 
@@ -147,14 +145,13 @@ function allDone() {
         questionsDiv.appendChild(createP2);
     }
 
-    // Label
+    // Text entry for name
     var createLabel = document.createElement("label");
     createLabel.setAttribute("id", "createLabel");
     createLabel.textContent = "Enter your initials: ";
 
     questionsDiv.appendChild(createLabel);
 
-    // input
     var createInput = document.createElement("input");
     createInput.setAttribute("type", "text");
     createInput.setAttribute("id", "initials");
@@ -162,7 +159,7 @@ function allDone() {
 
     questionsDiv.appendChild(createInput);
 
-    // submit
+    // Submit to local storage
     var createSubmit = document.createElement("button");
     createSubmit.setAttribute("type", "submit");
     createSubmit.setAttribute("id", "Submit");

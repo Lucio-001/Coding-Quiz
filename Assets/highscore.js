@@ -23,7 +23,7 @@ if (allScores !== null) {
 
     }
 }
-// retutn to home pafe
+// retutn to home page
 goBack.addEventListener("click", function () {
     window.location.replace(".index.html");
 });
