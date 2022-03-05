@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Coding Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Assets/style.css">
+</head>
+
+<body>
+    <!--high score and timer-->
+    <header class="min-vw-100 d-flex align-items-center row">
+        <h3 class="d-flex align-items-start p-4 col-9" ><a href="highscores.html">View High Scores</a></h3>
+        <h3 class="d-flex justify-content-end p-4 col-3" id="stopWatch"></h3>
+    </header>
+
+    <div class="my-1 col-12 text-center">
+        <button type="button" id="start" class="btn btn-primary btn-lg">START QUIZ</button>
+    </div>
+    
+
+    <!--container that has the questions-->
+    <div class="min-vw-100 d-flex justify-content-center">
+
+        <section class="w-100 row d-flex justify-content-center">
+
+            <form class="my-2 col-10 col-md-6 col-lg-5 bg-warning rounded container">
+                <!--code quiz title-->
+                <h1 id="question" class="display-6 text-center text">CODING QUIZ</h1>
+                
+                
+                <!--Question that needs to be answered-->
+                <form class="bg-white p-6 my-6 rounded ">
+                    <div class="text-center">
+                        <h4 id="question">question</h4>
+                    </div>
+                    
+                
+                    <!--buttons that will hold the answers-->
+                    <div id="options" class="row col-md-12 p-4">
+                        
+                    </div>
+                    
+                    <!--result at the bottom of the form to see if the answer was correct or not-->
+                    <footer id="result" class="container my-4">
+                        <h4>Your answer was:<span id="correct-answer">Result</span></h4>
+                    </footer>
+
+                    <!-- final result of te quiz-->
+
+                    <div id="final-result" class="text-center">
+                        <h4>Your final score was:<span id="final-score">100%</span></h4>
+                    </div>
+                </form>
+
+                
+            </form>
+          
+        </section>
+    
+      </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./Assets/script.js"></script>
+
+</html>
